@@ -25,7 +25,7 @@ class msuac (
 ) {
 
   validate_bool($enabled)
-  validate_re($prompt, /consentprompt|authprompt|disabled/)
+  validate_re($prompt, '^(consentprompt|authprompt|disabled)$')
 
   $prompt_value = $prompt ? {
     'disabled'      => '0x00000000',
