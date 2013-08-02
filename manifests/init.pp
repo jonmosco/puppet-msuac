@@ -24,6 +24,10 @@ class msuac (
   $prompt  = 'consentprompt',
 ) {
 
+  if $::operatingsystem != 'Windows' {
+    fail ("Class[msuac] can only be applied to Windows systems. It cannot be used on \"${::operatingsystem}.\"")
+  }
+
   validate_bool($enabled)
   validate_re($prompt, '^(consentprompt|authprompt|disabled)$')
 
