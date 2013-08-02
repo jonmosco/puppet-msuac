@@ -1,6 +1,6 @@
 # Microsoft User Account Control module
 #
-# $prompt_value is one of the three option: 
+# $prompt_value is one of the three option:
 #
 # 0x00000000
 # This option SHOULD be used to allow the Consent Admin to perform an
@@ -21,7 +21,7 @@
 #
 class msuac (
   $enabled = true,
-  $prompt  = 'consentprompt', 
+  $prompt  = 'consentprompt',
 ) {
 
   validate_bool($enabled)
