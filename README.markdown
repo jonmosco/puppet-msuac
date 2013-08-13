@@ -1,62 +1,87 @@
-#modulename
+#msuac
 
 ####Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with puppet-msuac](#setup)
-    * [What [Modulename] affects](#what-puppet-msuac-affects)
+3. [Setup - The basics of getting started with msuac](#setup)
+    * [What msuac affects](#what-msuac-affects)
     * [Setup requirements](#setup-requirements)
-    * [Beginning with [Modulename]](#beginning-with-puppet-msuac)
 4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
 ##Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves. This is your 30 second elevator pitch for your module. Consider including OS/Puppet version it works with.       
+The msuac module allows you to manage Microsoft User account control (MSUAC).
+UAC is a feature in Windows to help protect you from intrusive software by warning
+you if changes are being made.  When a change to the computer is being made that requires
+administrative privileges, UAC will prompt you based on its configuration.  This module will
+allow you to change those settings.
 
 ##Module Description
 
-If applicable, this section should have a brief description of the technology the module integrates with and what that integration enables. This section should answer the questions: "What does this module *do*?" and "Why would I use it?"
-    
-If your module has a range of functionality (installation, configuration, management, etc.) this is the time to mention it.
+This module will change the registry key values based on the desired UAC configuration.
 
 ##Setup
 
-###What [Modulename] affects
+###What msuac affects
 
-* A list of files, packages, services, or operations that the module will alter, impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form. 
+* If UAC is set to 'Disabled', a reboot will be required for changes to take effect.
 
-###Setup Requirements **OPTIONAL**
+###Setup Requirements
 
-If your module requires anything extra before setting up (pluginsync enabled, etc.), mention it here. 
-	
-###Beginning with [Modulename]	
+Depends on the following modules:
 
-The very basic steps needed for a user to get the module up and running. 
+[puppetlabs/registry](https://forge.puppetlabs.com/puppetlabs/registry)
 
-If your most recent release breaks compatibility or requires particular steps for upgrading, you may wish to include an additional section here: Upgrading (For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+[puppetlabs/stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib)
 
 ##Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing the fancy stuff with your module here. 
+Class: msuac
 
-##Reference
+        class { 'msuac':
+          enabled => false,
+          prompt  => disabled,
+        }
 
-Here, list the classes, types, providers, facts, etc contained in your module. This section should include all of the under-the-hood workings of your module so people know what the module is touching on their system but don't need to mess with things. (We are working on automating this section!)
+##Parameters:
+
+$prompt_value is one of the three option:
+
+0x00000000 (disabled)
+
+This option SHOULD be used to allow the Consent Admin to perform an
+operation that requires elevation without consent or credentials.
+
+0x00000001 (authprompt)
+
+This option SHOULD be used to prompt the Consent Admin to enter his or her
+user name and password (or another valid admin) when an operation requires
+elevation of privilege.
+
+0x00000002 (default, consentprompt)
+
+This option SHOULD be used to prompt the administrator in Admin Approval
+Mode to select either "Permit" or "Deny" an operation that requires
+elevation of privilege. If the Consent Admin selects Permit, the operation
+will continue with their highest available privilege. "Prompt for consent"
+removes the inconvenience of requiring that users enter their name and
+password to perform a privileged task.
 
 ##Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Windows Versions supported:
+
+        - Windows Visa
+        - Windows 7
+        - Server 2008
 
 ##Development
 
-Since your module is awesome, other users will want to play with it. Let them know what the ground rules for contributing are.
+##Release Notes/Contributors/Etc
 
-##Release Notes/Contributors/Etc **Optional**
+Contributors:
 
-If you aren't using changelog, put your release notes here (though you should consider using changelog). You may also add any additional sections you feel are necessary or important to include here. Please use the `## ` header. 
+        Thomas Linkin <tom@puppetlabs.com>

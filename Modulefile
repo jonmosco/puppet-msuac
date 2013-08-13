@@ -1,0 +1,5 @@
+name 'jonnyx-msuac'
+version '0.0.1'
+dependency 'puppetlabs/stdlib', '>=4.1.0'
+summary 'manage User Account Control on Microsoft Windows'
+description 'The msuac module allows you to manage Microsoft User account control (MSUAC).'

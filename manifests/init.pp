@@ -1,4 +1,6 @@
-# Microsoft User Account Control module
+# == Class: msuac
+#
+# == Parameters
 #
 # $prompt_value is one of the three option:
 #
@@ -18,6 +20,11 @@
 # will continue with their highest available privilege. "Prompt for consent"
 # removes the inconvenience of requiring that users enter their name and
 # password to perform a privileged task.
+#
+# == Authors
+#
+# Thomas Linkin <tom@puppetlabs.com>
+# Jon Mosco <jonny.mosco@gmail.com>
 #
 class msuac (
   $enabled = true,
