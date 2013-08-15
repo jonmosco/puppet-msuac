@@ -1,5 +1,5 @@
 name 'jonnyx-msuac'
-version '0.0.2'
+version '0.0.3'
 dependency 'puppetlabs/stdlib', '>=4.1.0'
 dependency 'puppetlabs/registry'
 summary 'manage User Account Control on Microsoft Windows'
