@@ -25,6 +25,7 @@
 #
 # Thomas Linkin <tom@puppetlabs.com>
 # Jon Mosco <jonny.mosco@gmail.com>
+# Ovidiu Calbajos <ovidiu.calbajos@gmail.com>
 #
 class msuac (
   $enabled = true,
@@ -57,8 +58,8 @@ class msuac (
   }
 
   registry::value { 'ConsentPromptBehaviorAdmin':
-    key    => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System',
-    type   => 'dword',
-    data   => $prompt_data,
+    key  => 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System',
+    type => 'dword',
+    data => $prompt_data,
   }
 }
