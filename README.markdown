@@ -77,6 +77,7 @@ Windows Versions supported:
         - Windows Visa
         - Windows 7
         - Server 2008
+        - Server 2012 R2
 
 ## Development
 
