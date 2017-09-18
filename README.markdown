@@ -1,6 +1,6 @@
-#msuac
+# msuac
 
-####Table of Contents
+### Table of Contents
 
 1. [Overview](#overview)
 2. [Module Description - What the module does and why it is useful](#module-description)
@@ -11,7 +11,7 @@
 5. [Limitations - OS compatibility, etc.](#limitations)
 6. [Development - Guide for contributing to the module](#development)
 
-##Overview
+## Overview
 
 The msuac module allows you to manage Microsoft User account control (MSUAC).
 UAC is a feature in Windows to help protect you from intrusive software by warning
@@ -19,17 +19,17 @@ you if changes are being made.  When a change to the computer is being made that
 administrative privileges, UAC will prompt you based on its configuration.  This module will
 allow you to change those settings.
 
-##Module Description
+## Module Description
 
 This module will change the registry key values based on the desired UAC configuration.
 
-##Setup
+## Setup
 
-###What msuac affects
+### What msuac affects
 
 * If UAC is set to 'Disabled', a reboot will be required for changes to take effect.
 
-###Setup Requirements
+### Setup Requirements
 
 Depends on the following modules:
 
@@ -37,7 +37,7 @@ Depends on the following modules:
 
 [puppetlabs/stdlib](https://forge.puppetlabs.com/puppetlabs/stdlib)
 
-##Usage
+## Usage
 
 Class: msuac
 
@@ -46,7 +46,7 @@ Class: msuac
           prompt  => disabled,
         }
 
-##Parameters:
+## Parameters:
 
 $prompt_value is one of the three option:
 
@@ -70,7 +70,7 @@ will continue with their highest available privilege. "Prompt for consent"
 removes the inconvenience of requiring that users enter their name and
 password to perform a privileged task.
 
-##Limitations
+## Limitations
 
 Windows Versions supported:
 
@@ -78,9 +78,9 @@ Windows Versions supported:
         - Windows 7
         - Server 2008
 
-##Development
+## Development
 
-##Release Notes/Contributors/Etc
+## Release Notes/Contributors/Etc
 
 Contributors:
 
