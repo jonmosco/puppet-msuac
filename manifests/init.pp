@@ -28,7 +28,7 @@
 # Ovidiu Calbajos <ovidiu.calbajos@gmail.com>
 #
 class msuac (
-  $enabled = true,
+  Boolean  $enabled = lookup('encore::windows::uac::enabled') |$k| { true },
   $prompt  = 'consentprompt',
 ) {
 
@@ -36,7 +36,6 @@ class msuac (
     fail ("Class[msuac] can only be applied to Windows systems. It cannot be used on \"${::operatingsystem}.\"")
   }
 
-  validate_bool($enabled)
   validate_re($prompt, '^(consentprompt|authprompt|disabled)$', "Valid values for \$promt are 'consentpromt', 'authprompt', or 'disabled'. Received ${prompt}")
 
   $prompt_data = $prompt ? {
